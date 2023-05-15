@@ -17,7 +17,8 @@ const TodoList = () => {
   ];
   
   useEffect(() => {
-    let StoredList = [
+   let StoredList = []
+     StoredList = [
       JSON.parse(localStorage.getItem("urgent-important")),
       JSON.parse(localStorage.getItem("not-urgent-important")),
       JSON.parse(localStorage.getItem("urgent-not-important")),
