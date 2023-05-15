@@ -31,7 +31,7 @@ const TodoList = () => {
   setLists(StoredList);
 }, []);
 
-  if (Lists) {
+  if (Lists!==undefined) {
     const now = new Date().toISOString().slice(0, 16);
     let filterByDateDelete = Lists[1]?.filter((obj) => obj.date_time > now);
     let filterByDateMove = Lists[1]?.filter((obj) => obj.date_time < now);
