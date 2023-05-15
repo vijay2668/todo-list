@@ -17,15 +17,19 @@ const TodoList = () => {
   ];
   
   useEffect(() => {
-   let StoredList = []
-     StoredList = [
+  let StoredList;
+  try {
+    StoredList = [
       JSON.parse(localStorage.getItem("urgent-important")),
       JSON.parse(localStorage.getItem("not-urgent-important")),
       JSON.parse(localStorage.getItem("urgent-not-important")),
       JSON.parse(localStorage.getItem("not-urgent-not-important"))
     ];
-    setLists(StoredList);
-  }, []);
+  } catch (error) {
+    console.log(error);
+  }
+  setLists(StoredList);
+}, []);
 
   if (Lists) {
     const now = new Date().toISOString().slice(0, 16);
