@@ -31,34 +31,28 @@ const TodoList = () => {
   setLists(StoredList);
 }, []);
 
-  if (Lists!==undefined) {
-    const now = new Date().toISOString().slice(0, 16);
-    let filterByDateDelete = Lists[1]?.filter((obj) => obj.date_time > now);
-    let filterByDateMove = Lists[1]?.filter((obj) => obj.date_time < now);
-    
-   if(filterByDateDelete){
+  if (Array.isArray(Lists) && Lists.length >= 2) {
+  const now = new Date().toISOString().slice(0, 16);
+  let filterByDateDelete = Lists[1].filter(obj => obj.date_time > now);
+  let filterByDateMove = Lists[1].filter(obj => obj.date_time < now);
+
+  if (filterByDateDelete.length > 0) {
     localStorage.setItem(
       "not-urgent-important",
       JSON.stringify(filterByDateDelete)
-      );
-   };
-      let isCategoryexist = JSON.parse(localStorage.getItem("urgent-important"));
-      if (isCategoryexist) {
-        filterByDateMove.forEach((element) => {
-          element.category = "urgent-important";
-        isCategoryexist.push(element);
-      });
-      localStorage.setItem("urgent-important", JSON.stringify(isCategoryexist));
-    } else {
-      let newArray = [];
-      filterByDateMove.forEach((element) => {
-        element.category = "urgent-important";
-        newArray.push(element); // add object to array
-      });
-      localStorage.setItem("urgent-important", JSON.stringify(newArray)); // store updated array in localStorage
-    }
-    // console.log(filterByDateMove)
+    );
   }
+
+  let urgentImportantArray = JSON.parse(localStorage.getItem("urgent-important")) || [];
+
+  filterByDateMove.forEach(element => {
+    element.category = "urgent-important";
+    urgentImportantArray.push(element);
+  });
+
+  localStorage.setItem("urgent-important", JSON.stringify(urgentImportantArray));
+}
+
   
   const handleInputChange = (e, index, item) => {
     const { checked } = e.target;
