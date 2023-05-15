@@ -36,10 +36,12 @@ const TodoList = () => {
     let filterByDateDelete = Lists[1]?.filter((obj) => obj.date_time > now);
     let filterByDateMove = Lists[1]?.filter((obj) => obj.date_time < now);
     
+   if(filterByDateDelete){
     localStorage.setItem(
       "not-urgent-important",
       JSON.stringify(filterByDateDelete)
       );
+   };
       let isCategoryexist = JSON.parse(localStorage.getItem("urgent-important"));
       if (isCategoryexist) {
         filterByDateMove.forEach((element) => {
