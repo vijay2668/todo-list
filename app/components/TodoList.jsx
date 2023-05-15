@@ -31,12 +31,12 @@ const TodoList = () => {
   setLists(StoredList);
 }, []);
 
-  if (Array.isArray(Lists) && Lists.length >= 2) {
+  if (Array.isArray(Lists) && Lists?.length >= 2) {
     const now = new Date().toISOString().slice(0, 16);
     let filterByDateDelete = Lists[1]?.filter(obj => obj.date_time > now);
     let filterByDateMove = Lists[1]?.filter(obj => obj.date_time < now);
   
-    if (filterByDateDelete.length > 0) {
+    if (filterByDateDelete?.length > 0) {
       localStorage.setItem(
         "not-urgent-important",
         JSON.stringify(filterByDateDelete)
@@ -50,11 +50,10 @@ const TodoList = () => {
       urgentImportantArray.push(element);
     });
   
-    if(filterByDateMove.length > 0 && urgentImportantArray){
+    if(filterByDateMove?.length > 0 && urgentImportantArray){
       localStorage.setItem("urgent-important", JSON.stringify(urgentImportantArray));
     }
   }
-
   
   const handleInputChange = (e, index, item) => {
     const { checked } = e.target;
