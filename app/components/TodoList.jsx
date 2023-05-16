@@ -31,7 +31,7 @@ const TodoList = () => {
   setLists(StoredList);
 }, []);
 
- if (Lists.length > 0) {
+  if (Lists?.length > 0) {
     const now = new Date().toISOString().slice(0, 16);
     let filterByDateDelete = Lists[1]?.filter((obj) => obj.date_time > now);
     let filterByDateMove = Lists[1]?.filter((obj) => obj.date_time < now);
@@ -44,7 +44,7 @@ const TodoList = () => {
     }
     let isCategoryexist = JSON.parse(localStorage.getItem("urgent-important"));
     if (isCategoryexist) {
-      filterByDateMove.forEach((element) => {
+      filterByDateMove?.forEach((element) => {
         element.category = "urgent-important";
         isCategoryexist.push(element);
         localStorage.setItem(
@@ -54,7 +54,7 @@ const TodoList = () => {
       });
     } else {
       let newArray = [];
-      filterByDateMove.forEach((element) => {
+      filterByDateMove?.forEach((element) => {
         element.category = "urgent-important";
         newArray.push(element); // add object to array
       });
