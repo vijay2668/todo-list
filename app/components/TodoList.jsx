@@ -31,28 +31,38 @@ const TodoList = () => {
   setLists(StoredList);
 }, []);
 
-  if (Array.isArray(Lists) && Lists?.length >= 2) {
+ if (Lists.length > 0) {
     const now = new Date().toISOString().slice(0, 16);
-    let filterByDateDelete = Lists[1]?.filter(obj => obj.date_time > now);
-    let filterByDateMove = Lists[1]?.filter(obj => obj.date_time < now);
-  
-    if (filterByDateDelete?.length > 0) {
+    let filterByDateDelete = Lists[1]?.filter((obj) => obj.date_time > now);
+    let filterByDateMove = Lists[1]?.filter((obj) => obj.date_time < now);
+
+    if (filterByDateDelete) {
       localStorage.setItem(
         "not-urgent-important",
         JSON.stringify(filterByDateDelete)
       );
     }
-  
-    let urgentImportantArray = JSON.parse(localStorage.getItem("urgent-important")) || [];
-  
-    filterByDateMove?.forEach(element => {
-      element.category = "urgent-important";
-      urgentImportantArray.push(element);
-    });
-  
-    if(filterByDateMove?.length > 0 && urgentImportantArray){
-      localStorage.setItem("urgent-important", JSON.stringify(urgentImportantArray));
+    let isCategoryexist = JSON.parse(localStorage.getItem("urgent-important"));
+    if (isCategoryexist) {
+      filterByDateMove.forEach((element) => {
+        element.category = "urgent-important";
+        isCategoryexist.push(element);
+        localStorage.setItem(
+          "urgent-important",
+          JSON.stringify(isCategoryexist)
+        );
+      });
+    } else {
+      let newArray = [];
+      filterByDateMove.forEach((element) => {
+        element.category = "urgent-important";
+        newArray.push(element); // add object to array
+      });
+      if (newArray.length > 0) {
+        localStorage.setItem("urgent-important", JSON.stringify(newArray)); // store updated array in localStorage
+      }
     }
+    // console.log(filterByDateMove)
   }
   
   const handleInputChange = (e, index, item) => {
