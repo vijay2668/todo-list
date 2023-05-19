@@ -82,7 +82,9 @@ const Modal = ({ setOpenModal, updateModal, Lists }) => {
           JSON.stringify(isCategoryexist)
         );
       } else {
-        localStorage.setItem(inputValue.category, JSON.stringify([inputValue]));
+        if(inputValue.category!=="", inputValue.task_title!=="", inputValue.date_time!==""){
+          localStorage.setItem(inputValue.category, JSON.stringify([inputValue]));
+        }
       }
     }
     window.location.reload(); // reload the page
