@@ -106,6 +106,18 @@ const Modal = ({ setOpenModal, updateModal, Lists }) => {
         </button>
         <div className="flex">
           <label>
+            <input
+              required=""
+              name="task_title"
+              placeholder="Enter Task"
+              type="text"
+              value={inputValue.task_title}
+              className="input input-bordered input-primary w-full max-w-xs"
+              onChange={handleChange}
+            />
+          </label>
+
+          <label>
             <select
               name="category"
               required=""
@@ -125,18 +137,6 @@ const Modal = ({ setOpenModal, updateModal, Lists }) => {
                 Not Urgent &amp; Not Important
               </option>
             </select>
-          </label>
-
-          <label>
-            <input
-              required=""
-              name="task_title"
-              placeholder="Enter Task"
-              type="text"
-              value={inputValue.task_title}
-              className="input input-bordered input-primary w-full max-w-xs"
-              onChange={handleChange}
-            />
           </label>
         </div>
         <label>
