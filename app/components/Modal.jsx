@@ -93,7 +93,7 @@ const Modal = ({ setOpenModal, updateModal, Lists }) => {
   // console.log(inputValue);
 
   return (
-    <div className="z-10 w-screen h-full md:h-screen absolute top-0 left-0 flex items-center justify-center bg-black/70">
+    <div className="z-10 w-screen h-screen absolute top-0 left-0 flex items-center justify-center bg-black/70">
       <form onSubmit={handleSubmit} className="relative form bg-neutral">
         <button
           onClick={() => {
