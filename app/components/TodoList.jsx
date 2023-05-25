@@ -106,7 +106,7 @@ const TodoList = () => {
         <div className="grid grid-cols-1 gap-2 md:grid-cols-2 w-[90%] h-[90%]">
           {categoryArray.map((gridCategory, gridIndex) => (
             <div key={gridIndex} className="collapse md:collapse-open border-2 rounded-lg text-center">
-              <input className="block md:hidden p-1 md:p-0" type="checkbox" />
+              <input className="block md:hidden" type="checkbox" />
               <h2 className="collapse-title text-xl shadow-sm shadow-white p-1">
                 {gridCategory}
               </h2>
