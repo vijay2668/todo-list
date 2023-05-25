@@ -104,7 +104,6 @@ const Modal = ({ setOpenModal, updateModal, Lists }) => {
         >
           <IoCloseSharp fontSize={25} />
         </button>
-        <div className="flex">
           <label>
             <input
               required=""
@@ -138,7 +137,6 @@ const Modal = ({ setOpenModal, updateModal, Lists }) => {
               </option>
             </select>
           </label>
-        </div>
         <label>
           <input
             required=""
