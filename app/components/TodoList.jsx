@@ -95,7 +95,7 @@ const TodoList = () => {
   
   if (Lists) {
     return (
-      <div className="w-screen bg-base-100 relative h-full md:h-screen z-0 flex flex-col items-center justify-center p-2">
+      <div className="w-screen bg-base-100 relative h-full z-0 flex flex-col items-center justify-center p-2">
           <button
             className="btn btn-primary mb-2"
             onClick={() => setOpenModal(true)}
